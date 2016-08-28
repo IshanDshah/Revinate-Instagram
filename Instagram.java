@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class Instagram {
 	List<Model> user;
-	// List<Integer> media;
+	
 	Map<Integer, ArrayList<Integer>> map;
 
 	/** Initialize your data structure here. */
@@ -29,7 +29,7 @@ public class Instagram {
 	/** Add a new media. */
 	public void postMedia(int userId, int mediaId) {
 		user.add(new Model(userId, mediaId));
-		// media.add(mediaId);
+		
 		if (!map.containsKey(userId)) {
 			map.put(userId, new ArrayList<Integer>());
 		}
@@ -46,8 +46,7 @@ public class Instagram {
 		} else {
 
 			ArrayList<Integer> folowedUsers = map.get(userId);
-			// System.out.println(folowedUsers.toString()+" "+user.toString());
-
+		
 			List<Integer> result = new ArrayList<>();
 			for (int i = user.size() - 1; i >= 0; i--) {
 				if (user.get(i).getUserId() == userId || folowedUsers.contains(user.get(i).getUserId())) {
@@ -65,6 +64,7 @@ public class Instagram {
 			return;
 		else {
 			ArrayList<Integer> x = map.get(followerId);
+			//To check whether the user is not already following
 			if (!x.contains(followedId))
 				x.add(followedId);
 			map.put(followerId, x);
